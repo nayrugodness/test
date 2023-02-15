@@ -1,0 +1,221 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{% block title %}Gaya Live{% endblock title %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Django Self-Hosted NFT Rarity Sniper">
+  <meta name="author" content="Matthew Freire">
+
+  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+
+  <!--<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+  {% block css %}
+  <!-- Your stuff: Third-party CSS libraries go here -->
+  <!-- This file stores project-specific CSS -->
+  <link href="{% static 'css/project.css' %}" rel="stylesheet">
+  {% endblock %}
+  <!-- Le javascript
+    ================================================== -->
+  {# Placed at the top of the document so pages load faster with defer #}
+  {% block javascript %}
+  <!-- place project specific Javascript in this file -->
+  <script defer src="{% static 'js/project.js' %}"></script>
+  {% endblock javascript %}
+
+</head>
+
+<body class="h-full" style="">
+
+  <div class="min-h-full">
+    <nav class="bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex" style="display:flex; flex-direction:row; justify-content:center;">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 bg-white p-6" style="width:70vw;">
+
+              <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+              <img src="{% static 'images/general/logogaya.jpg' %}" style="width:40px; height:40px;"/>&nbsp; &nbsp;
+               <span class="text-success">Gaya Live</span>
+           </a>
+            {% if user.is_authenticated %}
+             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+               <li><a href="{% url 'sniper:projects' %}" class="nav-link px-2 link-dark">Proyecto</a></li>
+                <li><a href="{% url 'about' %}" class="nav-link px-2 link-dark">Nosotros</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">Contáctanos</a></li>
+             </ul>
+              <div class="col-md-3 text-end">
+                <a href="{% url 'users:detail' user.username %}" class="" style="text-decoration:none;">
+                     <img src="{% static 'images/favicons/profileuser.png' %}" style="width:40px; height:40px; margin-right:10px;"/>&nbsp;
+                </a>
+                <a href="{% url 'account_logout' %}" class="" style="text-decoration:none;">
+                    <img src="{% static 'images/favicons/logout.png' %}" style="width:35px; height:35px; margin-right:10px;"/>&nbsp;
+                </a>
+              </div>
+            {% else %}
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="{% url 'sniper:projects' %}" class="nav-link px-2 link-dark">Proyecto</a></li>
+                <li><a href="{% url 'about' %}" class="nav-link px-2 link-dark">Nosotros</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">Contáctanos</a></li>
+             </ul>
+            <div class="col-md-3 text-end">
+                <a href="{% url 'account_login' %}" class="btn btn-outline-success me-2">Acceder</a>
+                <!--<a  href="{% url 'account_signup' %}" class="btn btn-success">Crear cuenta</a>-->
+              <a href="{% url 'sniper:choose' %}" class="btn btn-success"> Crear cuenta</a>
+              </div>
+            {% endif %}
+
+
+            </div>
+          </div>
+          <!--<div class="hidden sm:ml-6 sm:flex sm:items-center">
+            -- Profile dropdown --
+            <div class="ml-3 relative">
+
+            </div>
+          </div>-->
+
+        </div>
+      </div>
+    </nav>
+    <div class="container" style="70vw">
+      {% block content %}
+       <!-- START THE FEATURETTES -->
+      <div class="row featurette" style="vertical-align:middle; margin-bottom: 7rem; margin-top:7rem;">
+        <div class="col-md-7 text-center" style="display:flex; flex-direction: column; align-items:center; justify-content:center;">
+          <h1 class="featurette-heading fw-bold lh-1">Hoy somos un planeta rojo</h1>
+          <button class="btn btn-success mt-5 pt-3 pb-3 p-5">Actuemos ya!</button>
+        </div>
+        <div class="col-md-5 text-center">
+          <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto " width="400" height="400" src="{% static 'images/general/planet.png' %}" role="img" preserveAspectRatio="xMidYMid slice" focusable="false"/>
+
+        </div>
+      </div>
+
+
+      <h3 class="text-center fw-bold lh-1 text-success"  style="margin-top:7rem; margin-bottom:7rem;">CONTRIBUIR ES MUY FÁCIL Y SIN COMPLICACIONES</h3>
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-3 text-center">
+          <img src="{% static 'images/general/logogaya.jpg' %}" style="width:80px; height:80px;"/>
+          <h4 class="fw-normal">Regístrate</h4>
+          <p> Haz parte de nuestra comunidad que vive día a día por un mundo carbono neutral</p>
+
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-3 text-center">
+          <img src="{% static 'images/general/logogaya.jpg' %}" style="width:80px; height:80px;"/>
+          <h4 class="fw-normal text-center">Explora</h4>
+          <p> Explora los proyectos liderados por los desarrolladores de impacto ambiental positivo</p>
+
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-3 text-center">
+         <img src="{% static 'images/general/logogaya.jpg' %}" style="width:80px; height:80px;"/>
+         <h4 class="fw-normal">Contribuye</h4>
+         <p>Contribuye a los proyectos de tu interés y comienza a acercarte a tus objetivos de tener un impacto carbono neutral en el planeta</p>
+
+      </div>
+      <div class="col-lg-3 text-center">
+         <img src="{% static 'images/general/logogaya.jpg' %}" style="width:80px; height:80px;"/>
+         <h4 class="fw-normal">Administra</h4>
+         <p>Administra y realiza seguimiento a los proyectos de tu portafolio</p>
+
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+     <h3 class="text-center fw-bold lh-1 text-success " style="margin-top:7rem; margin-bottom:7rem;">NAVEGA ENTRE CATEGORÍAS</h3>
+     <div class="row">
+
+           <div class="col-lg-3 text-center">
+             <div class="card mb-3" style="max-width: 18rem;">
+               <div class="text-left text-success pw-bold"><h5>Hidroeléctrica</h5></div>
+               <div class="card-body text-success">
+                 <img src="{% static 'images/favicons/hydro-power (1).png' %}" style="width:8rem; height:8rem;"/>
+               </div>
+             </div>
+           </div>
+
+          <div class="col-lg-3 text-center">
+             <div class="card mb-3" style="max-width: 18rem;">
+               <div class="text-left text-success pw-bold"><h5>Nuclear</h5></div>
+               <div class="card-body text-success">
+                 <img src="{% static 'images/favicons/nuclear-power.png' %}" style="width:8rem; height:8rem;"/>
+               </div>
+             </div>
+           </div>
+
+          <div class="col-lg-3 text-center">
+             <div class="card mb-3" style="max-width: 18rem;">
+               <div class="text-left text-success pw-bold"><h5>Geotérmica</h5></div>
+               <div class="card-body text-success">
+                 <img src="{% static 'images/favicons/volcano.png' %}" style="width:8rem; height:8rem;"/>
+               </div>
+             </div>
+           </div>
+
+          <div class="col-lg-3 text-center">
+             <div class="card mb-3" style="max-width: 18rem;">
+               <div class="text-left text-success pw-bold"><h5>Eólica</h5></div>
+               <div class="card-body text-success">
+                 <img src="{% static 'images/favicons/wind-turbine.png' %}" style="width:8rem; height:8rem;"/>
+               </div>
+             </div>
+           </div>
+
+    </div>
+    <div class="py-10">
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-dismissible {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      <main>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+        </div>
+      </main>
+    </div>
+      {% endblock  %}
+  </div>
+{% block footer %}
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+          </a>
+          <span class="mb-3 mb-md-0 text-muted">&copy; 2022 Gaya Live, Inc</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+          <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+          <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+          <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+        </ul>
+      </footer>
+    </div>
+{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+  {% block modal %}{% endblock modal %}
+
+  {% block inline_javascript %}
+  {% comment %}
+  Script tags with only code, no src (defer by default). To run
+  with a "defer" so that you run run inline code:
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */ });
+  </script>
+  {% endcomment %}
+  {% endblock inline_javascript %}
+</body>
+
+</html>

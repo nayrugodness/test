@@ -1,0 +1,87 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% translate "Sign In" %}{% endblock %}
+
+{% block content %}
+
+<!--<h1>{% translate "Sign In" %}</h1>
+
+
+
+{% if socialaccount_providers %}
+<p>{% blocktranslate with site.name as site_name %}Please sign in with one
+of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+for a {{ site_name }} account and sign in below:{% endblocktranslate %}</p>
+
+<div class="socialaccount_ballot">
+
+  <ul class="socialaccount_providers">
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+  </ul>
+
+  <div class="login-or">{% translate 'or' %}</div>
+
+</div>
+
+{% include "socialaccount/snippets/login_extra.html" %}
+
+{% else %}
+<p>{% blocktranslate %}If you have not created an account yet, then please
+<a href="{{ signup_url }}">sign up</a> first.{% endblocktranslate %}</p>
+{% endif %}
+
+<form class="login" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% translate "Forgot Password?" %}</a>
+  <button class="primaryAction btn btn-primary" type="submit">{% translate "Sign In" %}</button>
+</form>-->
+<section class="vh-70" style="width: 100%">
+  <div class="container py-5 h-70">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <h2 class="text-center text-success mb-5">Inicia sesión en Gaya Live</h2>
+
+            <!--<div class="form-outline mb-4">
+              <input type="email" id="typeEmailX-2" class="form-control form-control-lg" placeholder="Email" />
+              <label class="form-label" for="typeEmailX-2"></label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="Contraseña"/>
+              <label class="form-label" for="typePasswordX-2"></label>
+            </div>-->
+            <form class="login" method="POST" action="{% url 'account_login' %}">
+              {% csrf_token %}
+              {{ form|crispy }}
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <!-- Checkbox -->
+              <p>¿Has olvidado tu contraseña? Recupérala  <a href="#" style="text-decoration: none;" class="text-success"> aquí </a></p>
+              <button class="primaryAction btn btn-success btn-lg mb-2" type="submit" style="width: 100%">{% translate "Sign In" %}</button>
+
+              <hr class="hr">
+
+              <p class="text-gray mb-2">¿Aún no tienes una cuenta?</p>
+
+              <!--<a href="{{ signup_url }}" style="text-decoration : none; " class="text-success fw-bold"> {% translate "Sign Up" %} </a>-->
+              <a href="{% url 'sniper:choose' %}" style="text-decoration : none;" class="text-success fw-bold">{% translate "Sign Up" %}</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

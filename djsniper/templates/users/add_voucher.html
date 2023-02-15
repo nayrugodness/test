@@ -1,0 +1,53 @@
+{% extends "users/dashboard.html" %}
+{% load static %}
+{% load humanize %}
+{% block title %}User: {{ object.username }}{% endblock %}
+{% load crispy_forms_tags %}
+
+
+{% block container %}
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <a href="{% url 'sniper:my-billings' user.username %}" class="m-2 mb-3 fw-bold text-black" style="text-decoration:none;">
+                    <img src="{% static 'images/dashboard/icons/arrow.png' %}" style="width:32px; height:32px;" />
+                    volver
+                  </a>
+                </div>
+                      <div class="row p-2" >
+                          <div class="col-sm-1 text-info fw-bold">
+                            Id
+                          </div>
+                          <div class="col-sm-2 text-info fw-bold">
+                            Proyecto
+                          </div>
+                         <div class="col-sm-2 text-info fw-bold">
+                            Fecha
+                          </div>
+                          <div class="col-sm-1 text-info fw-bold">
+                            #
+                          </div>
+                         <div class="col-sm-1 text-info fw-bold">
+                             $
+                          </div>
+                         <div class="col-sm-2 text-info fw-bold">
+                            ¿Aprobado?
+                         </div>
+                        <div class="col-sm-2 text-info fw-bold text-center">
+                            Voucher
+                        </div>
+                      </div>
+
+                      <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="control-group">
+                          <div class="controls">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                          </div>
+                        </div>
+                      </form>
+
+              </div>
+            </div>
+{% endblock %}

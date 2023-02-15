@@ -1,0 +1,72 @@
+{% extends "users/dashboard.html" %}
+{% load static %}
+{% load humanize %}
+{% block title %}User: {{ object.username }}{% endblock %}
+
+
+{% block container %}
+            <div class="card" style="display: flex; flex-direction : row; justify-content: space-around; flex-wrap: wrap; height: 100%;">
+              <!--<div class="card-body">
+                      <div class="row">
+                          <div class="col-sm-1 text-info fw-bold">
+                            Id
+                          </div>
+                          <div class="col-sm-2 text-info fw-bold">
+                            Proyecto
+                          </div>
+                         <div class="col-sm-2 text-info fw-bold">
+                            Fecha
+                          </div>
+                          <div class="col-sm-1 text-info fw-bold">
+                            #
+                          </div>
+                         <div class="col-sm-1 text-info fw-bold">
+                             $
+                          </div>
+                         <div class="col-sm-2 text-info fw-bold">
+                            Status
+                         </div>
+                        <div class="col-sm-2 text-info fw-bold">
+                            Voucher
+                        </div>
+                      </div>
+                {% for project in object_list %}
+                  {% if project.buyer.id is user.id %}
+                      <div class="row" style="height: 40px;">
+                        <div class="col-sm-1">
+                          <p class="mb-0">{{ project.id }}</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p class="text-muted mb-0">{{ project.nft.name }}</p>
+                        </div>
+                        <div class="col-sm-2">
+                          <p class="text-muted mb-0">{{ project.created }}</p>
+                        </div>
+                        <div class="col-sm-1">
+                          <p class="text-muted mb-0">{{ project.bonuses }}</p>
+                        </div>
+                        <div class="col-sm-1">
+                          <p class="text-muted mb-0">{{ project.purchase }}</p>
+                        </div>
+                        {% if project.approved %}
+                            <div class="col-sm-1">
+                              <p class=" mb-0 text-success fw-bold">Sí</p>
+                            </div>
+                        {% else %}
+                            <div class="col-sm-1">
+                              <p class="mb-0 text-danger fw-bold">No</p>
+                            </div>
+                        {% endif %}
+                        <div class="col-sm-2">
+
+                        </div>
+                      </div>
+                  {% endif %}
+                {% endfor %}
+              </div>-->
+
+              {{ grouped_objects }}
+            </div>
+{% endblock %}
+
+

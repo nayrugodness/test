@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% translate "Sign In" %}{% endblock %}
+{% block content %}
+<div class="container" style="display:flex; flex-direction:row; justify-content:center; align-items:center; width: 70vw;">
+  <div class="card text-center" style="display:flex; flex-direction:column; justify-content:space-evenly; min-width: 20rem; max-width:50vw; height:fit-content; padding:2rem; margin:1rem; align-self:center;">
+    <h3 class="fw-bold text-success">Regístrate en Gaya Live</h3>
+    <span style="margin-top:2rem;">Elige un rol</span>
+    <div class="d-grid gap-2" style="margin-top:2rem; margin-bottom:1rem;">
+      <a href="{% url 'users:personal' %}" class="btn btn-outline-success" type="button">Comprador a título personal</a>
+      <a href="{% url 'users:enterprise' %}" class="btn btn-outline-success" type="button">Comprador corporativo</a>
+      <a href="#" class="btn btn-outline-success" type="button">Desarrollador o promotor de proyectos</a>
+
+      <span>o</span>
+      <span class="fw-semibold text-secondary" >¿Ya tienes una cuenta?</span>
+      <a href="{% url 'account_login' %}" style="text-decoration : none; " class="text-success fw-bold"> {% translate "Sign In" %} </a>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

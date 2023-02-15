@@ -1,0 +1,69 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% translate "Signup" %}{% endblock %}
+{% block content %}
+
+{% block inner %}
+<!--<h1 class="text-center">{% translate "Sign Up" %}</h1>
+
+<p class="text-center">{% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktranslate %}</p>
+
+<form class="signup text-center" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+
+  {{ form|crispy }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button class="btn btn-primary" type="submit">{% translate "Sign Up" %} &raquo;</button>
+</form>
+-->
+<section class="vh-70" style="width: 100%">
+  <div class="container py-5 h-70">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <h2 class="text-center text-success mb-5">Estoy registrándome en Gaya Live como un Comprador Corporativo</h2>
+
+            <!--<div class="form-outline mb-4">
+              <input type="email" id="typeEmailX-2" class="form-control form-control-lg" placeholder="Email" />
+              <label class="form-label" for="typeEmailX-2"></label>
+            </div>
+
+            <div class="form-outline mb-4">
+              <input type="password" id="typePasswordX-2" class="form-control form-control-lg" placeholder="Contraseña"/>
+              <label class="form-label" for="typePasswordX-2"></label>
+            </div>-->
+            <form class="login" method="POST" action="{% url 'users:enterprise' %}">
+              {% csrf_token %}
+              {{ form|crispy }}
+
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <!-- Checkbox -->
+              <p>¿Has olvidado tu contraseña? Recupérala  <a href="#" style="text-decoration: none;" class="text-success"> aquí </a></p>
+              <button class="primaryAction btn btn-success btn-lg mb-2" type="submit" style="width: 100%">{% translate "Sign Up" %}</button>
+
+              <hr class="hr">
+
+              <p class="text-gray mb-2">¿Aún no tienes una cuenta?</p>
+
+              <!--<a href="{{ signup_url }}" style="text-decoration : none; " class="text-success fw-bold"> {% translate "Sign Up" %} </a>-->
+              <a href="{% url 'account_login' %}" style="text-decoration : none;" class="text-success fw-bold">{% translate "Sign In" %}</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/product-card.css' %}">
+{% endblock %}
+{% block content %}
+
+<h1 class="text-3xl font-bold leading-tight text-gray-900 m-5">
+    Projects
+</h1>
+<div class="container text-center" style="display:flex; flex-direction:row; justify-content:space-between; flex-wrap:wrap; align-items:center;">
+
+{% for project in object_list %}
+
+        <a href="{% url 'sniper:project-detail' project.id %}" style="text-decoration:none; width:350px; height:450px;">
+
+            <div class="profile-card-6" style="height:400px;"><img src="{{ project.image.url }}" class="img img-responsive img-center" style="object-fit:cover;">
+                <div class="profile-name">{{ project.name }}
+                    <br>$ {{ project.price }} USD
+                </div>
+                <div class="profile-position">Bonos : {{ project.number_of_nfts }}</div>
+                <div class="profile-overview">
+                    <div class="profile-overview">
+                          <div class="row text-center">
+                              <!--<div class="col-xs-4">
+                                  <h3>1</h3>
+                                  <p>Rank</p>
+                              </div>-->
+                              <!--<div class="col-xs-4">
+                                  <h3>{{ project.chain }}</h3>
+                                  <p>Blockchain</p>
+                              </div>
+                              <div class="col-xs-4">
+                                  <h3>35</h3>
+                                  <p>Goals</p>
+                              </div>-->
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+{% endfor %}
+
+</div>
+{% endblock content %}

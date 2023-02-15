@@ -1,0 +1,51 @@
+{% extends "users/dashboard.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ user.username }}{% endblock %}
+{% block container %}
+<!--<div class="card mb-4">
+  <div class="card-body">
+      <h1>{{ user.username }}</h1>
+      <form class="form-horizontal" method="post" action="{% url 'users:update' %}">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </div>
+      </form>
+  </div>
+</div>-->
+<div class="container">
+  <div class="row">
+    <h3 class="fw-bold text-success mb-2">Configuración del perfil</h3>
+    <!-- first column  --->
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <form class="form-horizontal" method="post" action="{% url 'users:update' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="control-group">
+              <div class="controls">
+                <button type="submit" class="btn btn-primary">Update</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--- end first column --->
+    <!-- second column --->
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+
+        </div>
+      </div>
+    </div>
+    <!---- end second column ---->
+  </div>
+</div>
+{% endblock %}

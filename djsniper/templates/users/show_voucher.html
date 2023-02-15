@@ -1,0 +1,22 @@
+{% extends "users/dashboard.html" %}
+{% load static %}
+{% load humanize %}
+{% block title %}User: {{ object.username }}{% endblock %}
+{% load crispy_forms_tags %}
+
+
+{% block container %}
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row align-left">
+                  <a href="{% url 'sniper:my-billings' user.username %}" class="m-2 mb-3 fw-bold text-black" style="text-decoration:none;">
+                    <img src="{% static 'images/dashboard/icons/arrow.png' %}" style="width:32px; height:32px;" />
+                    volver
+                  </a>
+                  <img src="{{ object.voucher.url }}">
+                </div>
+
+              </div>
+            </div>
+{% endblock %}
+
