@@ -22,7 +22,7 @@ certificatesResolvers:
   letsencrypt:
     # https://docs.traefik.io/master/https/acme/#lets-encrypt
     acme:
-      email: "matt@justdjango.com"
+      email: "nayru@gigamonos.com"
       storage: /etc/traefik/acme/acme.json
       # https://docs.traefik.io/master/https/acme/#httpchallenge
       httpChallenge:
@@ -31,7 +31,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: "Host(`djsniper.com`) || Host(`www.djsniper.com`)"
+      rule: "Host(`gaya_live.com`) || Host(`www.gaya_live.com`)"
       entryPoints:
         - web-secure
       middlewares:
@@ -42,7 +42,7 @@ http:
         certResolver: letsencrypt
 
     flower-secure-router:
-      rule: "Host(`djsniper.com`)"
+      rule: "Host(`gaya_live.com`)"
       entryPoints:
         - flower
       service: flower
