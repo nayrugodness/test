@@ -4,6 +4,8 @@ volumes:
   production_postgres_data: {}
   production_postgres_data_backups: {}
   production_traefik: {}
+  static_files: {}
+  media_files: {}
 
 services:
   django: &django
@@ -70,3 +72,15 @@ services:
       - ./.envs/.production/.django
     volumes:
       - production_postgres_data_backups:/backups:z
+
+  web:
+    build: .
+    command: /usr/sbin/nginx -g 'daemon off;'
+    ports:
+      - "8000:8000"
+      - "80:80"
+    depends_on:
+      - db
+    volumes:
+      - static_files:/app/static/
+      - media_files:/app/media/
