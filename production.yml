@@ -84,3 +84,10 @@ services:
     volumes:
       - static_files:/app/static/
       - media_files:/app/media/
+
+  db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: uwQRXKxdEXATlomoPpEZuhvGZfAMNJmY
+      POSTGRES_PASSWORD: wac84lgvKcFF0g6DIB5pOeVpXS0mfqo4dtdl4TCE1lynfvUL4SW07qM8sfSeByWZ
+      POSTGRES_DB: djsniper
