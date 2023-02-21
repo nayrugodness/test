@@ -31,7 +31,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: "Host(`gaya_live.com`) || Host(`www.gaya_live.com`)"
+      rule: "Host(`gaya.live`) || Host(`www.gaya.live`)"
       entryPoints:
         - web-secure
       middlewares:
@@ -42,7 +42,7 @@ http:
         certResolver: letsencrypt
 
     flower-secure-router:
-      rule: "Host(`gaya_live.com`)"
+      rule: "Host(`gaya.live`)"
       entryPoints:
         - flower
       service: flower
