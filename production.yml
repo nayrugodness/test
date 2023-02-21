@@ -73,21 +73,4 @@ services:
     volumes:
       - production_postgres_data_backups:/backups:z
 
-  web:
-    build: .
-    command: /usr/sbin/nginx -g 'daemon off;'
-    ports:
-      - "8000:8000"
-      - "80:80"
-    depends_on:
-      - db
-    volumes:
-      - static_files:/app/static/
-      - media_files:/app/media/
-
-  db:
-    image: postgres:13-alpine
-    environment:
-      POSTGRES_USER: uwQRXKxdEXATlomoPpEZuhvGZfAMNJmY
-      POSTGRES_PASSWORD: wac84lgvKcFF0g6DIB5pOeVpXS0mfqo4dtdl4TCE1lynfvUL4SW07qM8sfSeByWZ
-      POSTGRES_DB: djsniper
+ 
