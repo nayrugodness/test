@@ -45,9 +45,6 @@ services:
       - "54.227.201.228:80:80"
       - "54.227.201.228:443:443"
       - "54.227.201.228:5555:5555"
-      - "ec2-54-227-201-228.compute-1.amazonaws.com:80"
-      - "ec2-54-227-201-228.compute-1.amazonaws.com:443"
-      - "ec2-54-227-201-228.compute-1.amazonaws.com:5555"
 
   redis:
     image: redis:6
