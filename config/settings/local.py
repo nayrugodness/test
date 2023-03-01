@@ -65,8 +65,8 @@ CELERY_TASK_EAGER_PROPAGATES = True
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-ROOT_DIR = Path(_file_).resolve(strict=True).parent.parent.parent
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#ROOT_DIR = Path(_file_).resolve(strict=True).parent.parent.parent
 # djsniper/
 APPS_DIR = ROOT_DIR / "djsniper"
 MEDIA_ROOT = os.path.join(APPS_DIR, 'media')
