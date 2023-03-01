@@ -31,7 +31,8 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: "Host(`ec2-44-212-153-105.compute-1.amazonaws.com`) || Host(`www.ec2-44-212-153-105.compute-1.amazonaws.com`) || Host(`gaya.live`) || Host(`www.gaya.live`)"
+      #rule: "Host(`ec2-44-212-153-105.compute-1.amazonaws.com`) || Host(`www.ec2-44-212-153-105.compute-1.amazonaws.com`) || Host(`gaya.live`) || Host(`www.gaya.live`)"
+      rule : "Host(`gaya.live`)"
       entryPoints:
         - web-secure
       middlewares:
@@ -42,7 +43,8 @@ http:
         certResolver: letsencrypt
 
     flower-secure-router:
-      rule: "Host(`ec2-44-212-153-105.compute-1.amazonaws.com`) || Host(`gaya.live`)"
+      #rule: "Host(`ec2-44-212-153-105.compute-1.amazonaws.com`) || Host(`gaya.live`)"
+      rule : "Host(`gaya.live`)"
       entryPoints:
         - flower
       service: flower
