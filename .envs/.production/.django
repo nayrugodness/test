@@ -15,3 +15,4 @@ CELERY_FLOWER_PASSWORD=xEcgusNOu1dQ8Z0dClINJcAxV03gEnjpy3ujiVuVn2Hh10danRGj7wdyp
 
 
 DJANGO_AWS_S3_CUSTOM_DOMAIN=gaya.live docker-compose -f production.yml build``.
+DJANGO_SETTINGS_MODULE = "config.settings.production"

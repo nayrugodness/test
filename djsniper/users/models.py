@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from djsniper.sniper.models import NFTProject
 from django.db import models
+import uuid
 
 Role = (
     ('Persona Natural', 'Persona Natural'),
@@ -42,7 +43,7 @@ class User(AbstractUser):
 
 class Order(models.Model):
 
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     created = models.DateField(auto_now_add=True)
     edited = models.DateField(auto_now=True)
     nft = models.ForeignKey(NFTProject, on_delete=models.CASCADE, related_name="nft")
