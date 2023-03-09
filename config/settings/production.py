@@ -15,7 +15,7 @@ from .base import env
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = "h6=qc&mijc&ix9pwq4eybjv-aho4-fm1pvk+_sl7ua-1+_ut"
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["ec2-44-212-153-105.compute-1.amazonaws.com", "gaya.live"])
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["ec2-54-198-160-226.compute-1.amazonaws.com", "gaya.live"])
 
 # DATABASES
 # ------------------------------------------------------------------------------
