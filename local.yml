@@ -75,10 +75,10 @@ services:
     ports: []
     command: /start-celerybeat
 
-  flower:
-    <<: *django
-    image: djsniper_local_flower
-    container_name: sniper_flower
-    ports:
-      - "5555:5555"
-    command: /start-flower
+#  flower:
+#    <<: *django
+#    image: djsniper_local_flower
+#    container_name: sniper_flower
+#    ports:
+#      - "5555:5555"
+#    command: /start-flower
