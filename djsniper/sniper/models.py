@@ -1,9 +1,8 @@
 from django.db import models
 from django.db.models import CharField
 import uuid
-Coins = (
-    ('USD', 'USD')
-)
+
+
 
 
 class Category(models.Model):
@@ -29,7 +28,7 @@ class NFTProject(models.Model):
     price = models.CharField(max_length=200, null=True)
     chain = models.CharField(max_length=200, null=True)
     description = models.CharField(max_length=500, null=True)
-    coin = CharField(max_length=20, choices=Coins, default="USD", blank=False, editable=False)
+    coin = CharField(max_length=20, default="USD", blank=False, editable=False)
 
     def __str__(self):
         return self.name
