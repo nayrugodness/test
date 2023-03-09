@@ -43,7 +43,7 @@ class User(AbstractUser):
 
 class Order(models.Model):
 
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=True)
     created = models.DateField(auto_now_add=True)
     edited = models.DateField(auto_now=True)
     nft = models.ForeignKey(NFTProject, on_delete=models.CASCADE, related_name="nft")
