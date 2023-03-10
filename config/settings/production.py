@@ -68,11 +68,11 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 # https://django-storages.readthedocs.io/en/latest/#installation
 INSTALLED_APPS += ["storages"]  # noqa F405
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
-AWS_ACCESS_KEY_ID = env("DJANGO_AWS_ACCESS_KEY_ID")
+AWS_ACCESS_KEY_ID = env("DJANGO_AWS_ACCESS_KEY_ID", default="")
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
-AWS_SECRET_ACCESS_KEY = env("DJANGO_AWS_SECRET_ACCESS_KEY")
+AWS_SECRET_ACCESS_KEY = env("DJANGO_AWS_SECRET_ACCESS_KEY", default="")
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
-AWS_STORAGE_BUCKET_NAME = env("DJANGO_AWS_STORAGE_BUCKET_NAME")
+AWS_STORAGE_BUCKET_NAME = env("DJANGO_AWS_STORAGE_BUCKET_NAME", default="")
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_QUERYSTRING_AUTH = False
 # DO NOT change these unless you know what you're doing.
@@ -126,7 +126,7 @@ EMAIL_SUBJECT_PREFIX = env(
 # ADMIN
 # ------------------------------------------------------------------------------
 # Django Admin URL regex.
-ADMIN_URL = env("DJANGO_ADMIN_URL")
+# ADMIN_URL = env("DJANGO_ADMIN_URL")
 
 # Anymail
 # ------------------------------------------------------------------------------
@@ -135,12 +135,12 @@ INSTALLED_APPS += ["anymail"]  # noqa F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
 # https://anymail.readthedocs.io/en/stable/esps/mailgun/
-EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
-ANYMAIL = {
-    "MAILGUN_API_KEY": env("MAILGUN_API_KEY"),
-    "MAILGUN_SENDER_DOMAIN": env("MAILGUN_DOMAIN"),
-    "MAILGUN_API_URL": env("MAILGUN_API_URL", default="https://api.mailgun.net/v3"),
-}
+# EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+# ANYMAIL = {
+#     "MAILGUN_API_KEY": env("MAILGUN_API_KEY"),
+#     "MAILGUN_SENDER_DOMAIN": env("MAILGUN_DOMAIN"),
+#     "MAILGUN_API_URL": env("MAILGUN_API_URL", default="https://api.mailgun.net/v3"),
+# }
 
 # Collectfast
 # ------------------------------------------------------------------------------
@@ -188,25 +188,26 @@ LOGGING = {
 
 # Sentry
 # ------------------------------------------------------------------------------
-SENTRY_DSN = env("SENTRY_DSN")
-SENTRY_LOG_LEVEL = env.int("DJANGO_SENTRY_LOG_LEVEL", logging.INFO)
+# SENTRY_DSN = env("SENTRY_DSN")
+# SENTRY_LOG_LEVEL = env.int("DJANGO_SENTRY_LOG_LEVEL", logging.INFO)
 
-sentry_logging = LoggingIntegration(
-    level=SENTRY_LOG_LEVEL,  # Capture info and above as breadcrumbs
-    event_level=logging.ERROR,  # Send errors as events
-)
-integrations = [
-    sentry_logging,
-    DjangoIntegration(),
-    CeleryIntegration(),
-    RedisIntegration(),
-]
-sentry_sdk.init(
-    dsn=SENTRY_DSN,
-    integrations=integrations,
-    environment=env("SENTRY_ENVIRONMENT", default="production"),
-    traces_sample_rate=env.float("SENTRY_TRACES_SAMPLE_RATE", default=0.0),
-)
+# sentry_logging = LoggingIntegration(
+#     level=SENTRY_LOG_LEVEL,  # Capture info and above as breadcrumbs
+#     event_level=logging.ERROR,  # Send errors as events
+# )
+# integrations = [
+#     sentry_logging,
+#     DjangoIntegration(),
+#     CeleryIntegration(),
+#     RedisIntegration(),
+# ]
+# sentry_sdk.init(
+#     dsn=SENTRY_DSN,
+#     integrations=integrations,
+#     environment=env("SENTRY_ENVIRONMENT", default="production"),
+#     traces_sample_rate=env.float("SENTRY_TRACES_SAMPLE_RATE", default=0.0),
+# )
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+COLLECTFAST_STRATEGY = "collectfast.strategies.filesystem.FileSystemStrategy"
